@@ -13,12 +13,12 @@ export const Header: FunctionComponent<{}> = (props) => {
                 <Navbar.Brand href="#home">
                     <img
                         src={Logo}
-                        width="65"
-                        height="40"
+                        width="55"
+                        height="30"
                         className="d-inline-block align-top"
                         alt="$TEK"
                     />
-                    $TEK presale portal
+                    GET $TEK
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse className="justify-content-end" id="navbarScroll">
