@@ -70,7 +70,6 @@ export const WalletProvider: FunctionComponent<WalletProviderProps> = (props) =>
     const etherPrice = useCoingeckoPrice('ethereum', 'usd')
 
     useEffect( () => {
-        console.log(etherPrice);
         setETHPrice(etherPrice)
     }, [etherPrice]); 
     

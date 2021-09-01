@@ -3,15 +3,15 @@ import { Row, Col, Form, FloatingLabel, Button } from 'react-bootstrap'
 import { useTokenBalance, useEtherBalance, useEthers } from '@usedapp/core'
 import { formatUnits, formatEther } from '@ethersproject/units'
 import { useWallet } from './WalletProvider'
+import { LoanETH } from './LoanETH'
+import { LoanToken } from './LoanToken'
 
 export const TokenBuyForm: FunctionComponent<{}> = (props) => {
-    const { ETH, BPP, NFY, DEFO } = useWallet();
+    const { ETH, BPP, NFY, DEFO, account, activateBrowserWallet } = useWallet();
     const [selectedCoin, setSelectedCoin] = React.useState('ETH');
     const [currentBalanceOfSelectedCoin, setCurrentBalanceOfSelectedCoin] = React.useState(ETH)
     const [amountForBuy, setAmountForBuy] = React.useState('0');
     const [isPayingERC, setIsPayingERC] = React.useState<boolean>(false);
-
-    const { account } = useEthers()
 
     const getBalanceForSelectedCurrency = (currency: string) => {
         if (currency === 'ETH') {
@@ -78,11 +78,16 @@ export const TokenBuyForm: FunctionComponent<{}> = (props) => {
                     </FloatingLabel>
                 </Col>
                 <Col md={3}>
+                    {!account && <div className="d-grid gap-2">
+                        <Button size="lg" variant="success" onClick={() => activateBrowserWallet()}>
+                            Connect wallet
+                    </Button>
+                    </div>}
                     {
-                        selectedCoin !== 'ETH' && 'ERC Buying component to do'
+                        (account && selectedCoin !== 'ETH') && <LoanToken amount={amountForBuy} tokenName={selectedCoin} />
                     }
                     {
-                        selectedCoin === 'ETH' && 'ETH buying component'
+                        (account && selectedCoin === 'ETH') && <LoanETH amount={amountForBuy} />
                     }
                 </Col>
             </Row>

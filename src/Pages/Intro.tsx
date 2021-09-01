@@ -4,6 +4,7 @@ import { StatsBlockIntro } from './../Components/StatsBlockIntro'
 import { TextBlockIntro } from './../Components/TextBlockIntro'
 import { TokenBuyForm } from './../Components/TokenBuyForm'
 
+
 type IntroPageProps = {}
 
 export const Intro: FunctionComponent<IntroPageProps> = (props) => {
