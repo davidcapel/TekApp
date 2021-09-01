@@ -4,8 +4,9 @@ import Logo from './../Assets/logo.png'
 import { useWallet } from './WalletProvider'
 import { ConnectedAccountNavs } from './ConnectedAccountNavs'
 
+
 export const Header: FunctionComponent<{}> = (props) => {
-    const { activateBrowserWallet, account } = useWallet();
+    const { activateBrowserWallet, account, ETHPrice } = useWallet();
 
     return (
         <Navbar bg="dark" variant="dark" sticky="top">
@@ -23,8 +24,13 @@ export const Header: FunctionComponent<{}> = (props) => {
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse className="justify-content-end" id="navbarScroll">
                     <Nav className="mr-auto" navbarScroll>
+                        <Nav.Link>
+                            1 ETH = ${ETHPrice}
+                        </Nav.Link>
                         {(!account) &&
-                            <Nav.Link href="#" onClick={() => activateBrowserWallet()}>
+                            <Nav.Link href="#" onClick={() => {
+                                activateBrowserWallet()
+                            }}>
                                 Connect wallet
                             </Nav.Link>
                         }
