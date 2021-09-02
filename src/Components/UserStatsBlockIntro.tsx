@@ -6,6 +6,7 @@ import NFYLogo from './../Assets/nfy_logo.png'
 import ETHLogo from './../Assets/ethereum.png'
 import DefHoldLogo from './../Assets/defhold_logo.png'
 import { AssetInLoan } from './AssetInLoan'
+import { WithdrawAssets } from './WithdrawAssets'
 
 interface UserStatsBlockIntroProps {
 
@@ -15,7 +16,7 @@ interface UserStatsBlockIntroProps {
 export const UserStatsBlockIntro: FC<UserStatsBlockIntroProps> = (props) => {
     const { account } = useWallet()
 
-    if (! account) {
+    if (!account) {
         return (
             <Card>
                 <Card.Header>
@@ -39,7 +40,7 @@ export const UserStatsBlockIntro: FC<UserStatsBlockIntroProps> = (props) => {
                         <h4 className="text-primary">{account}</h4>
                     </Col>
                 </Row>
-                <hr/>
+                <hr />
                 <Row>
                     <Col md={6}>
                         <h3 className="text-success">APY %</h3>
@@ -50,7 +51,7 @@ export const UserStatsBlockIntro: FC<UserStatsBlockIntroProps> = (props) => {
                         </h3>
                     </Col>
                 </Row>
-                <hr/>
+                <hr />
                 <Row>
                     <Col md={12}>
                         <h2 className="text-success text-center">
@@ -58,10 +59,12 @@ export const UserStatsBlockIntro: FC<UserStatsBlockIntroProps> = (props) => {
                         </h2>
                     </Col>
                 </Row>
-                <AssetInLoan assetLogo={ETHLogo} assetName="$ETH"/>
-                <AssetInLoan assetLogo={NFYLogo} assetName="$NFY"/>
-                <AssetInLoan assetLogo={BitPowerLogo} assetName="$BPP"/>
-                <AssetInLoan assetLogo={DefHoldLogo} assetName="$DEFO"/>
+                <AssetInLoan assetLogo={ETHLogo} assetName="$ETH" />
+                <AssetInLoan assetLogo={NFYLogo} assetName="$NFY" />
+                <AssetInLoan assetLogo={BitPowerLogo} assetName="$BPP" />
+                <AssetInLoan assetLogo={DefHoldLogo} assetName="$DEFO" />
+                <hr/>
+                <WithdrawAssets/>
             </Card.Body>
         </Card>
     )

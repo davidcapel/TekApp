@@ -1,9 +1,13 @@
-import React, { FunctionComponent } from 'react'
+import React, { FC } from 'react'
 import { AppLayout } from './Components/AppLayout'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { Routes } from './Routes'
 
-export const App: FunctionComponent<{}> = (props) => {
+interface AppProps {
+
+}
+
+export const App: FC<AppProps> = (props) => {
 
   return (
     <AppLayout title="$TEK token presale portal">
