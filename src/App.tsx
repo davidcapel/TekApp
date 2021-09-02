@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { AppLayout } from './Components/AppLayout'
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Routes } from './Routes'
 
 interface AppProps {

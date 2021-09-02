@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from 'react'
 import { Row, Col, Form, FloatingLabel, Button } from 'react-bootstrap'
-import { useTokenBalance, useEtherBalance, useEthers } from '@usedapp/core'
-import { formatUnits, formatEther } from '@ethersproject/units'
 import { useWallet } from './WalletProvider'
 import { LoanETH } from './LoanETH'
 import { LoanToken } from './LoanToken'
@@ -11,7 +9,6 @@ export const TokenBuyForm: FunctionComponent<{}> = (props) => {
     const [selectedCoin, setSelectedCoin] = React.useState('ETH');
     const [currentBalanceOfSelectedCoin, setCurrentBalanceOfSelectedCoin] = React.useState(ETH)
     const [amountForBuy, setAmountForBuy] = React.useState('0');
-    const [isPayingERC, setIsPayingERC] = React.useState<boolean>(false);
 
     const getBalanceForSelectedCurrency = (currency: string) => {
         if (currency === 'ETH') {
@@ -36,9 +33,6 @@ export const TokenBuyForm: FunctionComponent<{}> = (props) => {
     const selectInputCurrency = (currency: string) => {
         setSelectedCoin(currency);
         setCurrentBalanceOfSelectedCoin(getBalanceForSelectedCurrency(currency));
-        if ('ETH' !== currency) {
-            setIsPayingERC(true);
-        }
     }
 
     const handleAmountChange = (amount: string) => {

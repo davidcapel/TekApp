@@ -8,7 +8,7 @@ import DefHoldLogo from './../Assets/defhold_logo.png'
 import { TokenBalance } from './TokenBalance'
 
 export const ConnectedAccountNavs: FunctionComponent<{}> = (props) => {
-    const { deactivate, account, ETH } = useWallet()
+    const { deactivate, ETH } = useWallet()
 
     return (
         <>

@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { useWallet } from './WalletProvider'
 import { Button } from 'react-bootstrap'
 
 interface LoanETHPropsInterface {
@@ -7,9 +6,6 @@ interface LoanETHPropsInterface {
 }
 
 export const LoanETH: FC<LoanETHPropsInterface> = ({ amount }) => {
-
-    const { account } = useWallet();
-
     return (
         <>
             <div className="d-grid gap-2">

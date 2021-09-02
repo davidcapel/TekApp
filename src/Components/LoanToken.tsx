@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { useWallet } from './WalletProvider'
 import { Button } from 'react-bootstrap'
 
 interface LoanTokenPropsInterface {
@@ -8,8 +7,6 @@ interface LoanTokenPropsInterface {
 }
 
 export const LoanToken: FC<LoanTokenPropsInterface> = ({ amount, tokenName }) => {
-
-    const { account } = useWallet();
 
     return (
         <>

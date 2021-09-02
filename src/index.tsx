@@ -5,7 +5,7 @@ import { App } from './App';
 import reportWebVitals from './reportWebVitals';
 import { WalletProvider } from './Components/WalletProvider';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { ChainId, DAppProvider, useEtherBalance, useEthers, Config } from '@usedapp/core'
+import { ChainId, DAppProvider, Config } from '@usedapp/core'
 
 
 const config: Config = {
