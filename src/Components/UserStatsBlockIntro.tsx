@@ -14,14 +14,32 @@ interface UserStatsBlockIntroProps {
 
 export const UserStatsBlockIntro: FC<UserStatsBlockIntroProps> = (props) => {
     const { account } = useWallet()
+
+    if (! account) {
+        return (
+            <Card>
+                <Card.Header>
+                    <h3 className="text-warning">
+                        Please connect your wallet first.
+                    </h3>
+                </Card.Header>
+            </Card>
+        )
+    }
+
+
     return (
         <Card>
             <Card.Body>
                 <Row>
                     <Col md={12}>
-                        <p>{account}</p>
+                        <h5 className="text-info">
+                            Connected as
+                        </h5>
+                        <h4 className="text-primary">{account}</h4>
                     </Col>
                 </Row>
+                <hr/>
                 <Row>
                     <Col md={6}>
                         <h3 className="text-success">APY %</h3>
