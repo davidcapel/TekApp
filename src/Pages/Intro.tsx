@@ -1,21 +1,23 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 import { Row, Col } from 'react-bootstrap'
 import { StatsBlockIntro } from './../Components/StatsBlockIntro'
-import { TextBlockIntro } from './../Components/TextBlockIntro'
+import { UserStatsBlockIntro } from './../Components/UserStatsBlockIntro'
 import { TokenBuyForm } from './../Components/TokenBuyForm'
 
 
-type IntroPageProps = {}
+interface IntroPageProps {
 
-export const Intro: FunctionComponent<IntroPageProps> = (props) => {
+}
+
+export const Intro: FC<IntroPageProps> = (props) => {
     return (
         <>
-            <Row className="mt-3 mb-3">
+            <Row className="mt-3 mb-3 disabled">
                 <Col md={6}>
                     <StatsBlockIntro />
                 </Col>
                 <Col md={6}>
-                    <TextBlockIntro />
+                    <UserStatsBlockIntro />
                 </Col>
             </Row>
             <Row>
