@@ -4,6 +4,7 @@ import { formatEther, formatUnits } from '@ethersproject/units'
 import { ConfigApp } from './../config'
 import { useCoingeckoPrice } from '@usedapp/coingecko'
 import { } from '@usedapp/core'
+import { SwitchToMainnetAlert } from './SwitchToMainnetAlert'
 
 
 type WalletProviderProps = {
@@ -51,8 +52,10 @@ export const useWallet = () => {
     return context;
 }
 
+const allowedNetworkIds = [1, 5]; // remove 5 when prod
+
 export const WalletProvider: FunctionComponent<WalletProviderProps> = (props) => {
-    const { activateBrowserWallet, account, deactivate } = useEthers()
+    const { activateBrowserWallet, account, deactivate, chainId } = useEthers()
 
     const [NFY, setNFY] = React.useState<string | number | undefined>(0);
     const [ETH, setETH] = React.useState<string | number | undefined>(0);
@@ -66,14 +69,14 @@ export const WalletProvider: FunctionComponent<WalletProviderProps> = (props) =>
     const DEFO_Balance = useTokenBalance(ConfigApp.tokens_addresses.DEFO, account)
     const BPP_Balance = useTokenBalance(ConfigApp.tokens_addresses.BPP, account)
 
-    
+
     const etherPrice = useCoingeckoPrice('ethereum', 'usd')
 
-    useEffect( () => {
+    useEffect(() => {
 
         setETHPrice(etherPrice)
-    }, [etherPrice]); 
-    
+    }, [etherPrice]);
+
 
     useEffect(() => {
         if (etherBalance) {
@@ -106,6 +109,10 @@ export const WalletProvider: FunctionComponent<WalletProviderProps> = (props) =>
             ETHPrice, setETHPrice
 
         }}>
+            {(!allowedNetworkIds.includes(chainId as number)) &&
+                <SwitchToMainnetAlert />
+            }
+
             {props.children}
         </WalletContext.Provider>
 
