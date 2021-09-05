@@ -3,6 +3,8 @@ import { Card, Table } from 'react-bootstrap'
 import { useCoingeckoPrice } from '@usedapp/coingecko'
 import { ConfigApp } from './../config'
 import { useWallet } from './WalletProvider'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInfoCircle, faLock, faUser, faDollarSign } from '@fortawesome/free-solid-svg-icons'
 
 export const StatsBlockIntro: FunctionComponent<{}> = (props) => {
 
@@ -36,23 +38,23 @@ export const StatsBlockIntro: FunctionComponent<{}> = (props) => {
                     <Table striped bordered hover variant="dark">
                         <tbody>
                             <tr>
-                                <td>Total ETH raised</td>
+                                <td><FontAwesomeIcon icon={faInfoCircle}/> Total ETH raised</td>
                                 <td>{lockedETH}</td>
                             </tr>
                             <tr>
-                                <td>Total NFY raised</td>
+                                <td><FontAwesomeIcon icon={faInfoCircle}/> Total NFY raised</td>
                                 <td>{lockedNFY}</td>
                             </tr>
                             <tr>
-                                <td>Total BPP raised</td>
+                                <td><FontAwesomeIcon icon={faInfoCircle}/> Total BPP raised</td>
                                 <td>{lockedBPP}</td>
                             </tr>
                             <tr>
-                                <td>Total DEFO raised</td>
+                                <td><FontAwesomeIcon icon={faInfoCircle}/> Total DEFO raised</td>
                                 <td>{lockedDEFO}</td>
                             </tr>
                             <tr>
-                                <td>TVL~ $</td>
+                                <td><FontAwesomeIcon icon={faLock}/> TVL~ $</td>
                                 <td>{TVL.toLocaleString()} $</td>
                             </tr>
                         </tbody>
@@ -61,11 +63,11 @@ export const StatsBlockIntro: FunctionComponent<{}> = (props) => {
                     <Table className="mt-3" striped bordered hover variant="dark">
                         <tbody>
                             <tr>
-                                <td>~ number of active users</td>
+                                <td><FontAwesomeIcon icon={faUser}/> ~ number of active users</td>
                                 <td>5 300</td>
                             </tr>
                             <tr>
-                                <td>$TEK price</td>
+                                <td><FontAwesomeIcon icon={faDollarSign}/> $TEK price</td>
                                 <td>228.57 $</td>
                             </tr>
                         </tbody>

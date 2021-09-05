@@ -9,7 +9,7 @@ export const Header: FunctionComponent<{}> = (props) => {
     const { activateBrowserWallet, account, ETHPrice } = useWallet();
 
     return (
-        <Navbar bg="dark" variant="dark" sticky="top">
+        <Navbar collapseOnSelect expand="lg"  bg="dark" variant="dark" sticky="top">
             <Container>
                 <Navbar.Brand href="#home">
                     <img
