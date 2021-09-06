@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
 import { App } from './App';
 import reportWebVitals from './reportWebVitals';
 import { WalletProvider } from './Components/WalletProvider';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import './index.css';
+import './app_style.scss'
 import { ChainId, DAppProvider, Config } from '@usedapp/core'
 
 

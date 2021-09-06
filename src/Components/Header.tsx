@@ -3,45 +3,49 @@ import { Navbar, Container, Nav } from 'react-bootstrap'
 import Logo from './../Assets/logo.png'
 import { useWallet } from './WalletProvider'
 import { ConnectedAccountNavs } from './ConnectedAccountNavs'
+import { NotificationsContainer } from './NotificationsContainer'
 
 
 export const Header: FunctionComponent<{}> = (props) => {
     const { activateBrowserWallet, account, ETHPrice } = useWallet();
 
     return (
-        <Navbar collapseOnSelect expand="lg"  bg="dark" variant="dark" sticky="top">
-            <Container>
-                <Navbar.Brand href="#home">
-                    <img
-                        src={Logo}
-                        width="55"
-                        height="30"
-                        className="d-inline-block align-top"
-                        alt="$TEK"
-                    />
-                    GET $TEK
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="navbarScroll" />
-                <Navbar.Collapse className="justify-content-end" id="navbarScroll">
-                    <Nav className="mr-auto" navbarScroll>
-                        <Nav.Link>
-                            1 ETH = ${ETHPrice}
-                        </Nav.Link>
-                        {(!account) &&
-                            <Nav.Link href="#" onClick={() => {
-                                activateBrowserWallet()
-                            }}>
-                                Connect wallet
+        <>
+            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
+                <Container>
+                    <Navbar.Brand href="#home">
+                        <img
+                            src={Logo}
+                            width="55"
+                            height="30"
+                            className="d-inline-block align-top"
+                            alt="$TEK"
+                        />
+                        GET $TEK
+                    </Navbar.Brand>
+                    <Navbar.Toggle aria-controls="navbarScroll" />
+                    <Navbar.Collapse className="justify-content-end" id="navbarScroll">
+                        <Nav className="mr-auto" navbarScroll>
+                            <Nav.Link>
+                                1 ETH = ${ETHPrice}
                             </Nav.Link>
-                        }
+                            {(!account) &&
+                                <Nav.Link href="#" onClick={() => {
+                                    activateBrowserWallet()
+                                }}>
+                                    Connect wallet
+                                </Nav.Link>
+                            }
 
-                        {
-                            (account) && <ConnectedAccountNavs/>
-                        }
+                            {
+                                (account) && <ConnectedAccountNavs />
+                            }
 
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+            <NotificationsContainer />
+        </>
     )
 };

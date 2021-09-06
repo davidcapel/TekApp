@@ -7,6 +7,13 @@ import { } from '@usedapp/core'
 import { SwitchToMainnetAlert } from './SwitchToMainnetAlert'
 
 
+interface NotificationProps {
+    title?: string,
+    content?: string,
+    delay?: number,
+    variant?: string
+}
+
 type WalletProviderProps = {
 
 }
@@ -28,6 +35,7 @@ type WalletContextState = {
     ETHPrice: string | number | undefined,
     setETHPrice: Function,
 }
+
 
 const WalletContext = React.createContext<WalletContextState>({
     activateBrowserWallet: () => { },
@@ -53,6 +61,8 @@ export const useWallet = () => {
 }
 
 const allowedNetworkIds = [1, 5]; // remove 5 when prod
+
+
 
 export const WalletProvider: FunctionComponent<WalletProviderProps> = (props) => {
     const { activateBrowserWallet, account, deactivate, chainId } = useEthers()

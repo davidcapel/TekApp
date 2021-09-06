@@ -4,6 +4,7 @@ import { SocialIcon } from 'react-social-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookOpen, faNewspaper } from '@fortawesome/free-solid-svg-icons'
 
+
 interface FooterProps {
 
 }
@@ -16,19 +17,19 @@ export const Footer: FC<FooterProps> = (props) => {
             <hr />
             <Row className="mt-3">
                 <Col md={4}>
-                    <SocialIcon bgColor="#212529" url="https://telegram.me/tek_official" className="mr-3" />
+                    <SocialIcon bgColor="#0d6efd" url="https://telegram.me/tek_official" className="mr-3" />
 
-                    <SocialIcon bgColor="#212529" url="https://twitter.com/tek_official" />
+                    <SocialIcon bgColor="#0d6efd" url="https://twitter.com/tek_official" />
 
-                    <SocialIcon bgColor="#212529" url="https://discord.gg/tek_official" />
+                    <SocialIcon bgColor="#0d6efd" url="https://discord.gg/tek_official" />
 
-                    <SocialIcon bgColor="#212529" url="https://github.com/tek_official" />
+                    <SocialIcon bgColor="#0d6efd" url="https://github.com/tek_official" />
 
-                    <SocialIcon bgColor="#212529" url="https://medium.com/tek_official" />
-                    <SocialIcon bgColor="#212529" network="email" url="/contact" />
+                    <SocialIcon bgColor="#0d6efd" url="https://medium.com/tek_official" />
+                    <SocialIcon bgColor="#0d6efd" network="email" url="/contact" />
                 </Col>
                 <Col md={2}>
-                    <b>
+                    <b className="text-primary">
                         &copy; Mimir Solutions 2021
                     </b>
                 </Col>
@@ -47,6 +48,7 @@ export const Footer: FC<FooterProps> = (props) => {
                     </div>
                 </Col>
             </Row>
+            
         </>
     )
 };
