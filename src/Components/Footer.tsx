@@ -30,7 +30,8 @@ export const Footer: FC<FooterProps> = (props) => {
                 </Col>
                 <Col md={2}>
                     <b className="text-primary">
-                        &copy; Mimir Solutions 2021
+                        &copy; Mimir Solutions 2021<br/>
+                        <span className="text-muted">v0.1.5</span>
                     </b>
                 </Col>
                 <Col md={3}>
