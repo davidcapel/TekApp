@@ -5,7 +5,11 @@ type TokenBalanceProps = {
     tokenKey: string
 }
 
-export const TokenBalance: FunctionComponent<TokenBalanceProps> = ({tokenKey }) => {
+const formater = (value: string | number | undefined) => {
+    return parseFloat(value as string).toFixed(2);
+}
+
+export const TokenBalance: FunctionComponent<TokenBalanceProps> = ({ tokenKey }) => {
 
     const {
         NFY,
@@ -20,12 +24,12 @@ export const TokenBalance: FunctionComponent<TokenBalanceProps> = ({tokenKey }) 
 
     return (
         <>
-            {tokenKey === 'NFY' && NFY}
-            {tokenKey === 'BPP' &&  BPP}
-            {tokenKey === 'DEFO' && DEFO}
-            {tokenKey === 'DAI' && DAI}
-            {tokenKey === 'USDT' && USDT}
-            {tokenKey === 'USDC' && USDC}
+            {tokenKey === 'NFY' && formater(NFY)}
+            {tokenKey === 'BPP' && formater(BPP)}
+            {tokenKey === 'DEFO' && formater(DEFO)}
+            {tokenKey === 'DAI' && formater(DAI)}
+            {tokenKey === 'USDT' && formater(USDT)}
+            {tokenKey === 'USDC' && formater(USDC)}
         </>
     )
-} 
+}

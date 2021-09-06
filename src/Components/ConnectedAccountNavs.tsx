@@ -23,7 +23,7 @@ export const ConnectedAccountNavs: FunctionComponent<{}> = (props) => {
                 <img src={ETHLogo} width="25"
                     height="25"
                     className="d-inline-block align-top"
-                    alt="*" />$ETH {ETH}
+                    alt="*" />$ETH {parseFloat(ETH as string)?.toFixed(4)}
             </Nav.Link>
             
             <Nav.Link>
