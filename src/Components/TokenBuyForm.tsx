@@ -5,7 +5,7 @@ import { LoanETH } from './LoanETH'
 import { LoanToken } from './LoanToken'
 
 export const TokenBuyForm: FunctionComponent<{}> = (props) => {
-    const { ETH, BPP, NFY, DEFO, account, activateBrowserWallet } = useWallet();
+    const { ETH, USDT, USDC, DAI, account, activateBrowserWallet } = useWallet();
     const [selectedCoin, setSelectedCoin] = React.useState('ETH');
     const [currentBalanceOfSelectedCoin, setCurrentBalanceOfSelectedCoin] = React.useState(ETH)
     const [amountForBuy, setAmountForBuy] = React.useState('0');
@@ -15,16 +15,16 @@ export const TokenBuyForm: FunctionComponent<{}> = (props) => {
             return ETH;
         }
 
-        if (currency === 'NFY') {
-            return NFY;
+        if (currency === 'USDT') {
+            return USDT;
         }
 
-        if (currency === 'BPP') {
-            return BPP;
+        if (currency === 'USDC') {
+            return USDC;
         }
 
-        if (currency === 'DEFO') {
-            return DEFO;
+        if (currency === 'DAI') {
+            return DAI;
         }
 
         return ETH;
@@ -55,9 +55,9 @@ export const TokenBuyForm: FunctionComponent<{}> = (props) => {
                         }
                         }>
                             <option value="ETH">ETH</option>
-                            <option value="NFY">NFY</option>
-                            <option value="BPP">BPP</option>
-                            <option value="DEFO">DEFO</option>
+                            <option value="USDT">USDT</option>
+                            <option value="USDC">USDC</option>
+                            <option value="DAI">DAI</option>
                         </Form.Select>
                     </FloatingLabel>
                 </Col>

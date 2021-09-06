@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 import { Card, Row, Col } from 'react-bootstrap'
 import { useWallet } from './WalletProvider'
-import BitPowerLogo from './../Assets/bitpower_logo.png'
-import NFYLogo from './../Assets/nfy_logo.png'
+import USDTLogo from './../Assets/usdt_logo.png'
+import USDCLogo from './../Assets/usdc_logo.png'
 import ETHLogo from './../Assets/ethereum.png'
-import DefHoldLogo from './../Assets/defhold_logo.png'
+import DAILogo from './../Assets/dai_logo.png'
 import { AssetInLoan } from './AssetInLoan'
 import { WithdrawAssets } from './WithdrawAssets'
 
@@ -33,38 +33,42 @@ export const UserStatsBlockIntro: FC<UserStatsBlockIntroProps> = (props) => {
         <Card>
             <Card.Body>
                 <Row>
-                    <Col md={12}>
-                        <h5 className="text-info">
-                            Connected as
-                        </h5>
-                        <h4 className="text-primary">{account}</h4>
+                    <Col md={6}>
+                        <Card className="tek-border-light tek-border-header">
+                            <Card.Header>
+                                <h3 className="text-primary text-center">APY %</h3>
+
+                            </Card.Header>
+                        </Card>
+                    </Col>
+                    <Col md={6}>
+                        <Card className="tek-border tek-border-header">
+                            <Card.Header>
+                                <h3 className="text-success text-center ">
+                                    101.3 %
+                                </h3>
+                            </Card.Header>
+                        </Card>
                     </Col>
                 </Row>
                 <hr />
                 <Row>
-                    <Col md={6}>
-                        <h3 className="text-success">APY %</h3>
-                    </Col>
-                    <Col md={6}>
-                        <h3 className="text-success">
-                            101.3 %
-                        </h3>
-                    </Col>
-                </Row>
-                <hr />
-                <Row>
                     <Col md={12}>
-                        <h2 className="text-success text-center">
-                            Assets in loan
-                        </h2>
+                        <Card className="tek-border-light mb-3">
+                            <Card.Footer>
+                                <h2 className="text-success text-center">
+                                    Assets in loan
+                                </h2>
+                            </Card.Footer>
+                        </Card>
                     </Col>
                 </Row>
                 <AssetInLoan assetLogo={ETHLogo} assetName="$ETH" />
-                <AssetInLoan assetLogo={NFYLogo} assetName="$NFY" />
-                <AssetInLoan assetLogo={BitPowerLogo} assetName="$BPP" />
-                <AssetInLoan assetLogo={DefHoldLogo} assetName="$DEFO" />
-                <hr/>
-                <WithdrawAssets/>
+                <AssetInLoan assetLogo={USDCLogo} assetName="$USDC" />
+                <AssetInLoan assetLogo={USDTLogo} assetName="$USDT" />
+                <AssetInLoan assetLogo={DAILogo} assetName="$DAI" />
+                <hr />
+                <WithdrawAssets />
             </Card.Body>
         </Card>
     )

@@ -15,7 +15,7 @@ export const Header: FunctionComponent<{}> = (props) => {
                     <Navbar.Brand href="#home">
                         <img
                             src={Logo}
-                            width="55"
+                            width="40"
                             height="30"
                             className="d-inline-block align-top"
                             alt="$TEK"
@@ -29,7 +29,7 @@ export const Header: FunctionComponent<{}> = (props) => {
                                 1 ETH = ${ETHPrice}
                             </Nav.Link>
                             {(!account) &&
-                                <Nav.Link href="#" onClick={() => {
+                                <Nav.Link href="#" className="tek-border tek-border-header" onClick={() => {
                                     activateBrowserWallet()
                                 }}>
                                     Connect wallet
