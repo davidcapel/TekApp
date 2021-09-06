@@ -8,7 +8,6 @@ import { NotificationsContainer } from './NotificationsContainer'
 
 export const Header: FunctionComponent<{}> = (props) => {
     const { activateBrowserWallet, account, ETHPrice } = useWallet();
-
     return (
         <>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">

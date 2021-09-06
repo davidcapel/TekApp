@@ -1,14 +1,21 @@
 import React, { FunctionComponent } from 'react'
 import { Nav } from 'react-bootstrap'
 import { useWallet } from './WalletProvider'
-import BitPowerLogo from './../Assets/bitpower_logo.png'
-import NFYLogo from './../Assets/nfy_logo.png'
+import USDC_logo from './../Assets/usdc_logo.png'
+import USDT_logo from './../Assets/usdt_logo.png'
 import ETHLogo from './../Assets/ethereum.png'
-import DefHoldLogo from './../Assets/defhold_logo.png'
+import DAI_logo from './../Assets/dai_logo.png'
 import { TokenBalance } from './TokenBalance'
+import { shortenAddress } from '@usedapp/core'
 
 export const ConnectedAccountNavs: FunctionComponent<{}> = (props) => {
-    const { deactivate, ETH } = useWallet()
+    const { deactivate, ETH, account } = useWallet()
+
+    if (!account) {
+        return (
+            <></>
+        )
+    }
 
     return (
         <>
@@ -18,27 +25,29 @@ export const ConnectedAccountNavs: FunctionComponent<{}> = (props) => {
                     className="d-inline-block align-top"
                     alt="*" />$ETH {ETH}
             </Nav.Link>
-            <Nav.Link >
-                <img src={NFYLogo} width="25"
-                    height="25"
-                    className="d-inline-block align-top"
-                    alt="*" />$NFY <TokenBalance tokenKey="NFY"/>
-            </Nav.Link>
+            
             <Nav.Link>
-                <img src={DefHoldLogo} width="25"
+                <img src={USDC_logo} width="25"
                     height="25"
                     className="d-inline-block align-top"
-                    alt="*" />$DEFO <TokenBalance tokenKey="DEFO"/>
+                    alt="*" /> <TokenBalance tokenKey="USDC" />
             </Nav.Link>
             <Nav.Link >
-                <img src={BitPowerLogo} width="25"
+                <img src={USDT_logo} width="25"
                     height="25"
                     className="d-inline-block align-top"
-                    alt="*" />$BPP <TokenBalance tokenKey="BPP"/>
+                    alt="*" /> <TokenBalance tokenKey="USDT" />
             </Nav.Link>
-            <Nav.Link
-                onClick={() => deactivate()}
-            >Logout</Nav.Link>
+            <Nav.Link >
+                <img src={DAI_logo} width="25"
+                    height="25"
+                    className="d-inline-block align-top"
+                    alt="*" /> <TokenBalance tokenKey="DAI" />
+            </Nav.Link>
+            <Nav.Link href ="#" style={{border: '1px solid', borderColor: "#6f42c1", borderRadius: "10px"}}
+                
+            >{shortenAddress(account)}</Nav.Link>
+            <Nav.Link onClick={() => deactivate()}>Disconnect</Nav.Link>
         </>
     )
 }

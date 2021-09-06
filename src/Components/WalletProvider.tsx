@@ -28,7 +28,13 @@ type WalletContextState = {
     ETH: string | number | undefined,
     BPP: string | number | undefined,
     DEFO: string | number | undefined,
+    DAI: string | number | undefined,
+    USDT: string | number | undefined,
+    USDC: string | number | undefined,
     setNFY: Function,
+    setDAI: Function,
+    setUSDT: Function,
+    setUSDC: Function,
     setETH: Function,
     setBPP: Function,
     setDEFO: Function,
@@ -47,6 +53,12 @@ const WalletContext = React.createContext<WalletContextState>({
     ETH: '0.00',
     BPP: '0.00',
     DEFO: '0.00',
+    DAI: '0.00',
+    USDT: '0.00',
+    USDC: '0.00',
+    setDAI: () => { },
+    setUSDT: () => { },
+    setUSDC: () => { },
     setNFY: () => { },
     setETH: () => { },
     setBPP: () => { },
@@ -71,6 +83,9 @@ export const WalletProvider: FunctionComponent<WalletProviderProps> = (props) =>
     const [ETH, setETH] = React.useState<string | number | undefined>(0);
     const [BPP, setBPP] = React.useState<string | number | undefined>(0);
     const [DEFO, setDEFO] = React.useState<string | number | undefined>(0);
+    const [USDT, setUSDT] = React.useState<string | number | undefined>(0);
+    const [USDC, setUSDC] = React.useState<string | number | undefined>(0);
+    const [DAI, setDAI] = React.useState<string | number | undefined>(0);
     const [ETHPrice, setETHPrice] = React.useState<string | number | undefined>(0);
 
     let etherBalance = useEtherBalance(account)
@@ -78,6 +93,9 @@ export const WalletProvider: FunctionComponent<WalletProviderProps> = (props) =>
     const NFY_Balance = useTokenBalance(ConfigApp.tokens_addresses.NFY, account)
     const DEFO_Balance = useTokenBalance(ConfigApp.tokens_addresses.DEFO, account)
     const BPP_Balance = useTokenBalance(ConfigApp.tokens_addresses.BPP, account)
+    const USDT_Balance = useTokenBalance(ConfigApp.tokens_addresses.USDT, account)
+    const USDC_Balance = useTokenBalance(ConfigApp.tokens_addresses.USDC, account)
+    const DAI_Balance = useTokenBalance(ConfigApp.tokens_addresses.DAI, account)
 
 
     const etherPrice = useCoingeckoPrice('ethereum', 'usd')
@@ -93,7 +111,7 @@ export const WalletProvider: FunctionComponent<WalletProviderProps> = (props) =>
             setETH(formatEther(etherBalance))
         }
 
-        if (account && NFY_Balance && DEFO_Balance && BPP_Balance) {
+        if (account && NFY_Balance && DEFO_Balance && BPP_Balance && USDC_Balance && USDT_Balance && DAI_Balance) {
             setNFY(
                 formatUnits(NFY_Balance)
             )
@@ -105,8 +123,12 @@ export const WalletProvider: FunctionComponent<WalletProviderProps> = (props) =>
             setDEFO(
                 formatUnits(BPP_Balance)
             )
+
+            setUSDC(formatUnits(USDC_Balance));
+            setUSDT(formatUnits(USDT_Balance));
+            setDAI(formatUnits(DAI_Balance));
         }
-    }, [etherBalance, setETH, setNFY, setBPP, setDEFO, account, NFY_Balance, DEFO_Balance, BPP_Balance]);
+    }, [etherBalance, setETH, setNFY, setBPP, setDEFO, account, NFY_Balance, DEFO_Balance, BPP_Balance, USDC_Balance, USDT_Balance, DAI_Balance]);
 
     return (
 
@@ -116,7 +138,10 @@ export const WalletProvider: FunctionComponent<WalletProviderProps> = (props) =>
             ETH, setETH,
             BPP, setBPP,
             DEFO, setDEFO,
-            ETHPrice, setETHPrice
+            DAI, setDAI,
+            USDC, setUSDC,
+            USDT, setUSDT,
+            ETHPrice, setETHPrice,
 
         }}>
             {(!allowedNetworkIds.includes(chainId as number)) &&
