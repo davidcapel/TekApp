@@ -56,7 +56,7 @@ export const UserStatsBlockIntro: FC<UserStatsBlockIntroProps> = (props) => {
                     <Col md={12}>
                         <Card className="tek-border-light mb-3">
                             <Card.Footer>
-                                <h2 className="text-success text-center">
+                                <h2 className="text-secondary text-center">
                                     Assets in loan
                                 </h2>
                             </Card.Footer>
