@@ -1,3 +1,5 @@
+import { ServiceAbi } from  './ABI/ServiceAbi' 
+
 export const ConfigApp = {
     tokens_addresses: {
         NFY: "0x1cbb83ebcd552d5ebf8131ef8c9cd9d9bab342bc",
@@ -20,5 +22,7 @@ export const ConfigApp = {
     },
     TEKContractAddress: "0x36f0a5c1f6b51d50fb67526f3def4a3ee2670cd2",
     TEKAbi: "todo add ABI HERE",
-    INFURAKEY: "0"
+    INFURAKEY: "0",
+    ServiceContractAddress: "0xc5A62130316Bf1610Bf88ab65bAfdF15154c2908",
+    ServiceAbi: ServiceAbi
 }

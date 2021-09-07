@@ -5,14 +5,12 @@ import { ConfigApp } from './../config'
 import { useCoingeckoPrice } from '@usedapp/coingecko'
 import { } from '@usedapp/core'
 import { SwitchToMainnetAlert } from './SwitchToMainnetAlert'
+import { utils } from 'ethers'
+import { Contract } from '@ethersproject/contracts'
 
 
-interface NotificationProps {
-    title?: string,
-    content?: string,
-    delay?: number,
-    variant?: string
-}
+const serviceInterface = new utils.Interface(ConfigApp.ServiceAbi)
+const serviceContract = new Contract(ConfigApp.ServiceContractAddress, serviceInterface)
 
 type WalletProviderProps = {
 
@@ -40,6 +38,8 @@ type WalletContextState = {
     setDEFO: Function,
     ETHPrice: string | number | undefined,
     setETHPrice: Function,
+    serviceContract: Contract,
+    serviceInterface: utils.Interface
 }
 
 
@@ -65,6 +65,8 @@ const WalletContext = React.createContext<WalletContextState>({
     setDEFO: () => { },
     ETHPrice: '0.00',
     setETHPrice: () => { },
+    serviceContract: serviceContract,
+    serviceInterface: serviceInterface
 });
 
 export const useWallet = () => {
@@ -142,6 +144,8 @@ export const WalletProvider: FunctionComponent<WalletProviderProps> = (props) =>
             USDC, setUSDC,
             USDT, setUSDT,
             ETHPrice, setETHPrice,
+            serviceContract,
+            serviceInterface
 
         }}>
             {(!allowedNetworkIds.includes(chainId as number)) &&
